@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { IData, IPlanetData } from 'src/app/models/models';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,9 +8,25 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./planet-table.component.scss'],
 })
 export class PlanetTableComponent implements OnInit {
+  planets: IPlanetData[] = [];
+  loading: boolean = false;
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    console.log(this.dataService.getPlanet());
+    this.loading = true;
+    this.dataService.getPlanet().subscribe({
+      next: (result: IData) => {
+        if (result) {
+          this.planets = result.results;
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 }
