@@ -1,1 +1,12 @@
-<p>planet-table works!</p>
+<div class="table-row-title">
+  <div class="table-cell-title">Номер</div>
+  <div class="table-cell-title">Название</div>
+  <div class="table-cell-title">Климат</div>
+  <div class="table-cell-title">Гравитация</div>
+</div>
+<div class="table">
+  <app-planet-table-row *ngFor="let planet of planets; index as i"
+                        [planetInfo]="planet"
+                        [index]="i + 1">
+  </app-planet-table-row>
+</div>

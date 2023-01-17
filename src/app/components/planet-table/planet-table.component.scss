@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  width: 50%;
+  margin: auto;
+  font-size: 1.2rem;
+}
+
+.table-row-title {
+  display: grid;
+  grid-template-columns: 1fr repeat(4, 2fr);
+  grid-gap: 1rem;
+  gap: 1rem;
+  position: fixed;
+  top: 0;
+  width: 50%;
+  background: #fff;
+
+  .table-cell-title {
+    font-weight: 600;
+  }
+}
+
+.table {
+  margin-top: 2rem;
+}
