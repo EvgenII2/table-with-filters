@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  width: 50%;
+  margin: auto;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+
+  .control {
+    width: min-content;
+
+    .control-label {
+      margin-bottom: 1rem;
+    }
+
+    .control-input {
+      padding: 0.5rem 0.75rem;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+    }
+
+    .validate-error {
+      font-size: 1rem;
+      color: #ec1342;
+    }
+  }
+
+  .search-button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-self: center;
+    cursor: pointer;
+    background-color: #1fca10;
+    color: #fff;
+  }
+
+  .search-button:hover {
+    box-shadow: 0px 0px 10px 0px rgba(12, 16, 19, 0.3);
+  }
+
+  .search-button:disabled {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}

@@ -1,1 +1,43 @@
-<p>planet-filter works!</p>
+<form class="filter-form"
+      [formGroup]="filterForm"
+      (ngSubmit)="onSubmit()">
+  <div class="control">
+    <label class="control-label">
+      Название
+    </label>
+    <input class="control-input"
+           type="text"
+           formControlName="filterNameControl">
+  </div>
+  <div class="control">
+    <label class="control-label">
+      Диаметр от
+    </label>
+    <input class="control-input"
+           type="number"
+           min="0"
+           formControlName="filterPopulationFromControl">
+    <div class="validate-error"
+         *ngIf="filterForm.controls['filterPopulationFromControl'].invalid && filterForm.controls['filterPopulationFromControl'].touched">
+      Больше 0
+    </div>
+  </div>
+  <div class="control">
+    <label class="control-label">
+      Диаметр до
+    </label>
+    <input class="control-input"
+           type="number"
+           min="0"
+           formControlName="filterPopulationToControl">
+    <div class="validate-error"
+         *ngIf="filterForm.controls['filterPopulationToControl'].invalid && filterForm.controls['filterPopulationToControl'].touched">
+      Больше 0
+    </div>
+  </div>
+  <button class="search-button"
+          type="submit"
+          [disabled]="filterForm.invalid && filterForm.touched">
+    Найти
+  </button>
+</form>
