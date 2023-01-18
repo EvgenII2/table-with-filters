@@ -1,4 +1,5 @@
-<div *ngIf="!loading; else spinnerBlock">
+<div *ngIf="!loading; else spinnerBlock"
+     class="table-wrapper">
   <ng-container *ngIf="planets.length > 0; else notDataBlock">
     <div class="table-row-title">
       <div class="table-cell-title">Номер</div>

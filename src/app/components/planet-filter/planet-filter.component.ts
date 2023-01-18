@@ -46,4 +46,8 @@ export class PlanetFilterComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.dataService.filterSub.next(this.filterForm.getRawValue());
   }
+
+  eraseFilter(event: any) {
+    this.filterForm.reset();
+  }
 }
