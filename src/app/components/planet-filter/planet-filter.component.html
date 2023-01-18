@@ -17,7 +17,7 @@
            type="number"
            min="0"
            formControlName="filterDiameterFromControl">
-    <div class="validate-error"    
+    <div class="validate-error"
          *ngIf="filterForm.controls['filterDiameterFromControl'].invalid && filterForm.controls['filterDiameterFromControl'].touched">
       Больше 0
     </div>
@@ -35,7 +35,12 @@
       Больше 0
     </div>
   </div>
-  <button class="search-button"
+  <button class="button erase-button"
+          type="button"
+          (click)="eraseFilter($event)">
+    Очистить
+  </button>
+  <button class="button search-button"
           type="submit"
           [disabled]="filterForm.invalid && filterForm.touched">
     Найти
