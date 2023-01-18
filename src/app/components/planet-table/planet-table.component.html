@@ -1,18 +1,26 @@
 <div *ngIf="!loading; else spinnerBlock">
-  <div class="table-row-title">
-    <div class="table-cell-title">Номер</div>
-    <div class="table-cell-title">Название</div>
-    <div class="table-cell-title">Климат</div>
-    <div class="table-cell-title">Диаметр</div>
-  </div>
-  <div class="table">
-    <app-planet-table-row *ngFor="let planet of planets; index as i"
-                          [planetInfo]="planet"
-                          [index]="i + 1">
-    </app-planet-table-row>
-  </div>
+  <ng-container *ngIf="planets.length > 0; else notDataBlock">
+    <div class="table-row-title">
+      <div class="table-cell-title">Номер</div>
+      <div class="table-cell-title">Название</div>
+      <div class="table-cell-title">Климат</div>
+      <div class="table-cell-title">Диаметр</div>
+    </div>
+    <div class="table">
+      <app-planet-table-row *ngFor="let planet of planets; index as i"
+                            [planetInfo]="planet"
+                            [index]="i + 1">
+      </app-planet-table-row>
+    </div>
+  </ng-container>
 </div>
 
 <ng-template #spinnerBlock>
   <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #notDataBlock>
+  <div class="not-data-block">
+    Планет по заданным фильтрам не найдено
+  </div>
 </ng-template>
