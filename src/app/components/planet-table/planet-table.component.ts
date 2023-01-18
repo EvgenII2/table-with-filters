@@ -69,6 +69,7 @@ export class PlanetTableComponent implements OnInit, OnDestroy {
   }
 
   searchPlanets(filter: IFilter) {
+    console.log(filter);
     if (filter.filterNameControl) {
       this.planets = [
         ...this.planets.filter((planet: IPlanetData) => {
@@ -81,21 +82,29 @@ export class PlanetTableComponent implements OnInit, OnDestroy {
         }),
       ];
     }
-    if (filter.filterDiameterFromControl) {
+    if (
+      filter.filterDiameterFromControl !== null &&
+      filter.filterDiameterFromControl !== undefined
+    ) {
       this.planets = [
         ...this.planets.filter((planet: IPlanetData) => {
           return (
-            filter.filterDiameterFromControl &&
+            filter.filterDiameterFromControl !== null &&
+            filter.filterDiameterFromControl !== undefined &&
             parseInt(planet.diameter, 10) >= filter.filterDiameterFromControl
           );
         }),
       ];
     }
-    if (filter.filterDiameterToControl) {
+    if (
+      filter.filterDiameterToControl !== null &&
+      filter.filterDiameterToControl !== undefined
+    ) {
       this.planets = [
         ...this.planets.filter((planet: IPlanetData) => {
           return (
-            filter.filterDiameterToControl &&
+            filter.filterDiameterToControl !== null &&
+            filter.filterDiameterToControl !== undefined &&
             parseInt(planet.diameter, 10) <= filter.filterDiameterToControl
           );
         }),
