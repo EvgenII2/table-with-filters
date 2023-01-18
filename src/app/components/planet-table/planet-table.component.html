@@ -1,12 +1,20 @@
-<div class="table-row-title">
-  <div class="table-cell-title">Номер</div>
-  <div class="table-cell-title">Название</div>
-  <div class="table-cell-title">Климат</div>
-  <div class="table-cell-title">Диаметр</div>
+<div *ngIf="!loading; else spinnerBlock">
+  <div class="table-row-title">
+    <div class="table-cell-title">Номер</div>
+    <div class="table-cell-title">Название</div>
+    <div class="table-cell-title">Климат</div>
+    <div class="table-cell-title">Диаметр</div>
+  </div>
+  <div class="table">
+    <app-planet-table-row *ngFor="let planet of planets; index as i"
+                          [planetInfo]="planet"
+                          [index]="i + 1">
+    </app-planet-table-row>
+  </div>
 </div>
-<div class="table">
-  <app-planet-table-row *ngFor="let planet of planets; index as i"
-                        [planetInfo]="planet"
-                        [index]="i + 1">
-  </app-planet-table-row>
-</div>
+
+<ng-template #spinnerBlock>
+  <div>
+    Загрузка
+  </div>
+</ng-template>

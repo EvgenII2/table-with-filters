@@ -16,9 +16,9 @@
     <input class="control-input"
            type="number"
            min="0"
-           formControlName="filterPopulationFromControl">
-    <div class="validate-error"
-         *ngIf="filterForm.controls['filterPopulationFromControl'].invalid && filterForm.controls['filterPopulationFromControl'].touched">
+           formControlName="filterDiameterFromControl">
+    <div class="validate-error"    
+         *ngIf="filterForm.controls['filterDiameterFromControl'].invalid && filterForm.controls['filterDiameterFromControl'].touched">
       Больше 0
     </div>
   </div>
@@ -29,9 +29,9 @@
     <input class="control-input"
            type="number"
            min="0"
-           formControlName="filterPopulationToControl">
+           formControlName="filterDiameterToControl">
     <div class="validate-error"
-         *ngIf="filterForm.controls['filterPopulationToControl'].invalid && filterForm.controls['filterPopulationToControl'].touched">
+         *ngIf="filterForm.controls['filterDiameterToControl'].invalid && filterForm.controls['filterDiameterToControl'].touched">
       Больше 0
     </div>
   </div>

@@ -1,6 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { IFilter } from 'src/app/models/models';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-planet-filter',
@@ -8,24 +16,24 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./planet-filter.component.scss'],
 })
 export class PlanetFilterComponent implements OnInit, OnDestroy {
+  @Output() onSearchEvent = new EventEmitter<IFilter>();
+
   filterForm: FormGroup = new FormGroup({
     filterNameControl: new FormControl(),
-    filterPopulationFromControl: new FormControl('', [Validators.min(0)]),
-    filterPopulationToControl: new FormControl('', [Validators.min(0)]),
+    filterDiameterFromControl: new FormControl(null, [Validators.min(0)]),
+    filterDiameterToControl: new FormControl(null, [Validators.min(0)]),
   });
   destroySub: Subject<boolean> = new Subject();
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.filterForm.valueChanges
       .pipe(takeUntil(this.destroySub))
       .subscribe((changes) => {
-        console.log(this.filterForm.controls);
         Object.keys(this.filterForm.controls).forEach((control) => {
-          this.filterForm.controls[control].updateValueAndValidity({
-            onlySelf: true,
-          });
+          // prettier-ignore
+          this.filterForm.controls[control].updateValueAndValidity({ onlySelf: true });
           this.filterForm.controls[control].markAsTouched();
         });
       });
@@ -36,6 +44,6 @@ export class PlanetFilterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.filterForm.getRawValue());
+    this.dataService.filterSub.next(this.filterForm.getRawValue());
   }
 }
