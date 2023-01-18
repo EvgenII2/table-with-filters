@@ -1,4 +1,5 @@
 type NumberOrNull = number | null;
+type StringOrNull = string | null;
 
 export interface IData {
   count: NumberOrNull;
@@ -22,4 +23,10 @@ export interface IPlanetData {
   created: string;
   edited: string;
   url: string;
+}
+
+export interface IFilter {
+  filterNameControl: StringOrNull;
+  filterDiameterFromControl: NumberOrNull;
+  filterDiameterToControl: NumberOrNull;
 }

@@ -1,0 +1,5 @@
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr repeat(4, 2fr);
+  gap: 1rem;
+}

@@ -1,0 +1,43 @@
+<form class="filter-form"
+      [formGroup]="filterForm"
+      (ngSubmit)="onSubmit()">
+  <div class="control">
+    <label class="control-label">
+      Название
+    </label>
+    <input class="control-input"
+           type="text"
+           formControlName="filterNameControl">
+  </div>
+  <div class="control">
+    <label class="control-label">
+      Диаметр от
+    </label>
+    <input class="control-input"
+           type="number"
+           min="0"
+           formControlName="filterDiameterFromControl">
+    <div class="validate-error"    
+         *ngIf="filterForm.controls['filterDiameterFromControl'].invalid && filterForm.controls['filterDiameterFromControl'].touched">
+      Больше 0
+    </div>
+  </div>
+  <div class="control">
+    <label class="control-label">
+      Диаметр до
+    </label>
+    <input class="control-input"
+           type="number"
+           min="0"
+           formControlName="filterDiameterToControl">
+    <div class="validate-error"
+         *ngIf="filterForm.controls['filterDiameterToControl'].invalid && filterForm.controls['filterDiameterToControl'].touched">
+      Больше 0
+    </div>
+  </div>
+  <button class="search-button"
+          type="submit"
+          [disabled]="filterForm.invalid && filterForm.touched">
+    Найти
+  </button>
+</form>
