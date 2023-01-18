@@ -5,6 +5,7 @@ import { PlanetTableComponent } from './components/planet-table/planet-table.com
 import { PlanetFilterComponent } from './components/planet-filter/planet-filter.component';
 import { PlanetTableRowComponent } from './components/planet-table-row/planet-table-row.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PlanetTableComponent,
     PlanetFilterComponent,
     PlanetTableRowComponent,
+    SpinnerComponent,
   ],
   imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
